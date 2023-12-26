@@ -1,0 +1,71 @@
+{% extends 'main-layout.html' %}
+    {% load static %} 
+{% block content %}
+<!-- breadcrumb -->
+    <div class="row">
+        <div class="col-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb bg-primary text-white-all">
+                <li class="breadcrumb-item"><a href="{% url 'index' %}"><i class="fas fa-tachometer-alt"></i>Acceuil</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="#"><i class="far fa-file"></i>Plagiat en local</a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="card-header">
+                        <h4>45 et Dimitri(Tonye)</h4>
+                </div>
+            <div class="card-body">
+                <p>
+                    -Plagiat en Local 
+                        Ici vous allez comparer un document avec tout les documents de la base de donnees et retouner un rapport en PDF et un pourcentage de similitude
+                </p>
+
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                      <button class="nav-link active" id="nav-home-tab" data-toggle="tab" data-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Upload (.pdf)</button>
+                      <button class="nav-link" id="nav-profile-tab" data-toggle="tab" data-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Upload (.txt,.py,...)</button>
+                    </div>
+                  </nav>
+                  <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        
+                        <form method = "POST" class="post-form" action = "{% url 'envoifichier' %}" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <label class="form-label" for="customFile"> Upload (.pdf)</label>
+                            <input type="file" class="form-control" id="nomdoc" name="nomdoc"/>
+                           
+
+                            <div class="mt-4 mb-4 p-3 align-center rt-sidebar-last-ele">
+                               
+                                <button type="submit" class="btn btn-primary"> 
+                                     Envoyer</button>
+                            </div>
+                        </form>
+                    
+                    </div>
+                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" >
+                                         
+                        <form method = "POST" class="post-form" action = "{% url 'envoifichier2' %}" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <label class="form-label" for="customFile"> Upload (.txt,.py,...)</label>
+                            <input type="file" class="form-control" id="nomdoc" name="nomdoc"/>
+
+                            <div class="mt-4 mb-4 p-3 align-center rt-sidebar-last-ele">
+                               
+                                <button type="submit" class="btn btn-primary"> 
+                                     Envoyer</button>
+                            </div>
+                        </form>
+                    
+                    </div>
+                  </div>
+
+            </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
