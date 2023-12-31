@@ -2,6 +2,8 @@
 from difflib import SequenceMatcher 
 from pdfminer.high_level import extract_text
 import glob
+import os
+
 
 class Plagialocal:
     
@@ -20,7 +22,19 @@ class Plagialocal:
             result = int(ab*100) 
             pourcentage = int(result)
             # Display the final result
-            return pourcentage
+            nom1 = os.path.basename(fichier)
+            nom = os.path.basename(fichier2)
+        
+            if pourcentage >= 0 and pourcentage <=25:
+                couleur = "#FFC961"
+            elif pourcentage >= 26 and pourcentage <= 50:
+                couleur = "#1D702D"
+            elif pourcentage >= 51 and pourcentage <= 75:
+                couleur = "#FC7F3C"
+            elif pourcentage >= 76 and pourcentage <= 100:
+                couleur = "#B83A1B"
+            
+            return [nom1,nom,couleur,pourcentage]
         
     
     def plagiapdf(self,fichier,fichier2): 
@@ -35,17 +49,20 @@ class Plagialocal:
         result = match.ratio() * 100
         pourcentage = int(result)
         # Display the final result
+        nom1 = os.path.basename(fichier)
+        nom = os.path.basename(fichier2)
         
         if pourcentage >= 0 and pourcentage <=25:
-            couleur = "yellow"
+            couleur = "#FFC961"
         elif pourcentage >= 26 and pourcentage <= 50:
-            couleur = "green"
+            couleur = "#1D702D"
         elif pourcentage >= 51 and pourcentage <= 75:
-            couleur = "orange"
+            couleur = "#FC7F3C"
         elif pourcentage >= 76 and pourcentage <= 100:
-            couleur = "red"
-            
-        return [pourcentage,couleur]
+            couleur = "#B83A1B"
+         
+        #return pourcentage   
+        return [nom1,nom,couleur,pourcentage]
        
         
         
@@ -57,3 +74,5 @@ class Plagialocal:
                 veri = True
             
             return veri
+        
+       

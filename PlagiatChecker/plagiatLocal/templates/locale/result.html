@@ -19,42 +19,46 @@
                         <h4>45 et Dimitri(Tonye)</h4>
                 </div>
             <div class="card-body">
-                {% if resultats %}
+          
+            {% if n == '0' %}
                 <p >
-                    -Plagiat en Local 
+                   <FONT COLOR="RED" > -Plagiat en Local 
                         Ici vous allez comparer un document avec tout les documents de la base de donnees et retouner un rapport en PDF et un pourcentage de similitude
-                  
+                   </FONT>
                     </p>
-                    <h4 class="modal-header-title">RESULTATS </h4>
-                    <div class="row">
-            <div class="col-md-12">
-                <div class="table-wrap">
-                    <table class="table">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th>Nom du fichier tester</th>
-                                <th>ratio</th>
-                                <th>&nbsp;</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        {% for resultat in resultats %}
+                   <!-- New Live Modal -->
+    
+                <div class="modal-body">
+                    <h4 class="modal-header-title">RESULTAT </h4>
+                    <div class="login-form">
+                        <table>
+                            <thead>
                                 <tr>
-                    
-                                    <td> {{ resultat.nomtest }} </td>
-                                    <td><font COLOR=" {{ resultat.color }} " > <d>{{ resultat.ratio }} % </b></font></td>
-                                                            
+                                    <th>Nom</th>
+                                    <th>Ratio</th>
                                 </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                {% for resultat in resultats %}
+                                <tr>
+                                    
+                                    <FONT COLOR=" {{ resultat.color }} " >
+                                    <td> {{ resultat.nomdoc }} </td>
+                                    <td> {{ resultat.ratio }} </td>
+                                    </FONT>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+
+                        </table>
+                        
+                        
+                    </div>
                 </div>
-                </div>
-            </div>
-                 
+            
+                    <!-- End Modal -->
 
             {% endif %}
-        </br>
                 <nav>
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
                       <button class="nav-link active" id="nav-home-tab" data-toggle="tab" data-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Upload (.pdf)</button>

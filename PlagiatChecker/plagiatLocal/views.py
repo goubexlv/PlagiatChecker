@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from plagiatLocal.forms import DocumentForm
 from plagiatLocal.models import Document
+from plagiatLocal.models import Rapport
 
 from api.workfile import *
 from api.plagialocal import * 
@@ -9,7 +10,13 @@ from api.plagialocal import *
 
 
 def plagiatLocal(request):
-    return render(request, "locale/index.html")
+    rapport_list = Rapport.objects.all()
+    n='0'
+    context = {
+                'resultats': rapport_list
+    
+            }
+    return render(request, "locale/index.html",context)
 
 
 def send_fichier(request):
@@ -26,10 +33,23 @@ def send_fichier(request):
                 documents = Document.objects.all()
                 for document in documents:
                     if Typefile(str(document.nomdoc)) == "pdf" and str(document.nomdoc) != str(dernier.nomdoc):
-                        pdfverif.append(plagia.plagiapdf("./media/public/"+fichier,"./media/"+str(document.nomdoc)))
-                
-            print(pdfverif)
-            return redirect("plagiatLocal")                
+                        nouveau = []
+                        nouveau.append(plagia.plagiapdf("./media/public/"+fichier,"./media/"+str(document.nomdoc)))
+                        for nv in nouveau:
+                            rapport = Rapport(document.id,nv[0],nv[1],nv[2],nv[3],0)
+                            rapport.save()
+                        pdfverif.append(rapport)
+            
+            
+            print(pdfverif) 
+            rapport_list = Rapport.objects.all()
+            n='0'
+            context = {
+                'resultats': rapport_list
+            }
+            #return render(request,"locale/result.html",{'n':n},{'resultats': rapport_list}) 
+            return redirect("plagiatLocal")
+                                
     
 
 def send_fichier2(request):
