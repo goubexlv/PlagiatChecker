@@ -33,9 +33,9 @@ rfc3986==2.0.0
 rfc3987==1.3.8
 rich==13.3.1
 roguehostapd==1.1.2
-routersploit==3.4.0
+# routersploit==3.4.0
 rq==1.15.0
-rtlsdr-scanner==1.3.2
+rtlsdr-scanner==1.3.1
 ruamel.yaml==0.17.21
 ruamel.yaml.clib==0.2.8
 scapy==2.5.0
@@ -50,7 +50,7 @@ simplejson==3.19.2
 simplekv==0.14.1
 six==1.16.0
 slowapi==0.1.4
-smbmap==1.9.2
+smbmap==1.10.2
 smoke-zephyr==2.0.1
 sniffio==1.3.0
 sortedcontainers==2.4.0

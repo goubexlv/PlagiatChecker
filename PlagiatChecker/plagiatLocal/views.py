@@ -14,7 +14,6 @@ def plagiatLocal(request):
     n='0'
     context = {
                 'resultats': rapport_list
-    
             }
     return render(request, "locale/index.html",context)
 
