@@ -10,16 +10,26 @@ from api.plagialocal import *
 
 
 def plagiatLocal(request):
+
+    return render(request, "locale/index.html")
+
+def plagiatLocalResponse(request):
     rapport_list = Rapport.objects.all()
     n='0'
     context = {
                 'resultats': rapport_list
     
             }
-    return render(request, "locale/index.html",context)
+    return render(request, "locale/results.html",context)
 
 
 def send_fichier(request):
+    liste_sup = Rapport.objects.all()
+    if liste_sup:
+        for sup in liste_sup:
+            rapp = Rapport.objects.get(id=sup.id)
+            rapp.delete()
+    
     fichier = str(request.FILES['nomdoc'])
     pdfverif = []
     plagia = Plagialocal()
@@ -48,7 +58,7 @@ def send_fichier(request):
                 'resultats': rapport_list
             }
             #return render(request,"locale/result.html",{'n':n},{'resultats': rapport_list}) 
-            return redirect("plagiatLocal")
+            return redirect("resultat")
                                 
     
 
