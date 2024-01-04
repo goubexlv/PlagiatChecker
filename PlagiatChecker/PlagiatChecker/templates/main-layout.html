@@ -7,7 +7,13 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Otika - Admin Dashboard Template</title>
+  <title>Projet</title>
+
+
+  {% block linkcss %}
+  
+  {% endblock %}
+
   <!-- General CSS Files -->
   <link rel="stylesheet" href="{% static 'assets/css/app.min.css' %}">
   <!-- Template CSS -->
@@ -15,7 +21,11 @@
   <link rel="stylesheet" href="{% static 'assets/css/components.css' %}">
   <!-- Custom style CSS -->
   <link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+
   <link rel='shortcut icon' type='image/x-icon' href="{% static 'assets/img/favicon.ico' %}"/>
+  <script src="{% static 'assets/js/jquery.steps.js' %}"></script>
+
+
 </head>
 
 <body>
@@ -269,6 +279,9 @@
       </footer>
     </div>
   </div>
+  <script>
+    
+  </script>
   <!-- General JS Scripts -->
   <script src="{% static 'assets/js/app.min.js' %}"></script>
   <!-- JS Libraies -->
@@ -279,8 +292,12 @@
   <script src="{% static 'assets/js/scripts.js' %}"></script>
   <!-- Custom JS File -->
   <script src="{% static 'assets/js/custom.js' %}"></script>
-</body>
+  <script src="{% static 'assets/js/jquery.steps.js' %}"></script>
 
+</body>
+{% block scripts %}
+  
+{% endblock %}
 
 <!-- index.html  21 Nov 2019 03:47:04 GMT -->
 </html>
