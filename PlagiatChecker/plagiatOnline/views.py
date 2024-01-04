@@ -1,7 +1,10 @@
+import pprint
 from django.shortcuts import render
 from pdfminer.high_level import extract_text
-from django.http import JsonResponse
-
+from django.http import HttpResponseRedirect, JsonResponse
+from plagiatOnline.form import DocumentsForm
+from plagiatOnline.models import Documents
+from api.api_plagiat import * 
 
 # Create your views here.
 
@@ -11,26 +14,31 @@ def plagiatOnline(request):
 
 def upload_file(request):
     if request.method == 'POST':
-        try:
-            # uploaded_file = request.FILES.get('file')
-            uploaded_file = request.FILES.get('file')
+        doc = DocumentsForm(request.POST,request.FILES)
+        resultat = ''
+        if doc.is_valid():
+            doc.save()
+            dernier = Documents.objects.latest('id')
+            documents = Documents.objects.all()
+            for document in documents:
+                if  str(document.file) != str(dernier.file):
+                    resultat = extract_pdf_content("./media/"+str(dernier.file))
+            return JsonResponse({'status': 'success', 'result': resultat })
+            
+        else:
+            return JsonResponse({'status': 'error', 'errors': doc.errors})
+    else:
+        doc = DocumentsForm()
 
-            # Check if a file was actually uploaded
-            if not uploaded_file:
-                raise ValueError("A file was not provided.")
+    return JsonResponse({'status': 'error', 'message': 'Method not allowed'})
 
-            # pdf_content = extract_text_from_pdf(uploaded_file)
-          
-            # return JsonResponse({'pdf_content': pdf_content})
-        except Exception as e:
-            return JsonResponse({'error': str(e)}, status=500)
 
-    return JsonResponse({'message': 'Méthode non autorisée.'}, status=405)
-                
-def extract_text_from_pdf(uploaded_file):
-    # Extract text from the PDF file
+def extract_pdf_content(pdf_file):
     try:
-        pdf_content = extract_text(uploaded_file)
+        online_plagiarism_checker = Onlineplagiat()
+        result = online_plagiarism_checker.extraction_contenu_pdf(pdf_file)
+        return {'status': 'success', 'result': result}
     except Exception as e:
-            return JsonResponse({'error': str(e)}, status=500)
-    return pdf_content
+        return {'status': 'error', 'message': str(e)}
+
+

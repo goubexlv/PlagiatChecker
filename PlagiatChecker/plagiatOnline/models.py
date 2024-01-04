@@ -1,3 +1,9 @@
 from django.db import models
+from django.db import models
 
-# Create your models here.
+class Documents(models.Model):
+    file = models.FileField(upload_to='public',null=True)
+   
+    class Meta:
+        db_table = "documents"      
+        

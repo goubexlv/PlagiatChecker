@@ -31,6 +31,8 @@ urlpatterns = [
     # Gallagher
     path("plagiatOnline/", plagiatOnline ,name="plagiatOnline"),   
     path("upload_file/", upload_file ,name="upload_file"),    
-     
+
+
+
 
 ]
