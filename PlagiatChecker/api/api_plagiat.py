@@ -19,10 +19,11 @@ class Onlineplagiat :
             "scrapeSources": False
         }
         try:
+            print(text)
             response = requests.post(url, headers=headers, json=data)
             response.raise_for_status()  
             result = response.json()
-            print(result)
+            return result
         except requests.exceptions.RequestException as e:
             print(e)
     

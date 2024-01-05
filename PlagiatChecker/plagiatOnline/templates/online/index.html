@@ -5,6 +5,8 @@
        <link rel="stylesheet" href="{% static 'assets/bundles/dropzonejs/dropzone.css' %}">
        <link rel="stylesheet" href="{% static 'assets/bundles/summernote/summernote-bs4.css' %}">
        <link rel="stylesheet" href="{% static 'assets/bundles/datatables/datatables.min.css' %}">
+       <link rel="stylesheet" href="{% static 'assets/css/spinner.css' %}">
+
        <link rel="stylesheet" href="{% static 'assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css' %}">
     {% endblock %}
 {% block content %}
@@ -70,8 +72,16 @@
             <section>
                 <p>
                   <div style="text-align:center; margin:0 auto;">
-                    <a href="#" class="btn btn-icon icon-left btn-success" id="send_plagiat"><i class="fas fa-check"></i> Start plagiat Online</a>
+                    <div class="container">
+                      <div id="loading" class="loading" onClick="hideSpinner()">
+                        <div id="spinnerMessage">Loading...</div>
+                      </div>
+                      {% comment %} <form method="GET" action="{% url 'check_plagiat' %}">
+                        <input type="hidden" name="text" id="">
+                      </form> {% endcomment %}
+                      <button class="btn btn-icon icon-left btn-success"  onClick="showSpinner()" id="send_plagiat"><i class="fas fa-check"></i> Start plagiat Online</button>
                   </div>
+                  
                 </p>
             </section>
             <h3>Rapport et Statistiques</h3>
@@ -173,16 +183,17 @@
     <script src="{% static 'assets/js/page/datatables.js' %}"></script>
 
     <script>
-      alert(1);
+      var text = "";
       Dropzone.options.mydropzone = {
         paramName: "file", // Le nom du paramètre qui contient le fichier sur le serveur
-        maxFilesize: 5, // Taille maximale du fichier en Mo
-        acceptedFiles: ".pdf, .doc, .docx", // Types de fichiers autorisés
+        maxFilesize: 1000, // Taille maximale du fichier en Mo
+        acceptedFiles: ".pdf, .doc, .docx , .py", // Types de fichiers autorisés
         init: function () {
             this.on("success", function (file, response) {
               console.log(1);
               console.log(response);
                 // Réaction en cas de succès de l'envoi
+                text = response.result.result;
                 $("#pdfContent").text(response.result.result);
               });
             this.on("error", function (file, errorMessage) {
@@ -191,8 +202,72 @@
             });
         }
     };
+    var loadingDiv = document.getElementById('loading');
+    var spinnerMessageDiv = document.getElementById('spinnerMessage');
 
+    function showSpinner() {
+        loadingDiv.style.visibility = 'visible';
+        spinnerMessageDiv.innerText = 'Loading...';
+        var csrfToken = document.cookie.match(/csrftoken=([^ ;]+)/)[1];
+
+        // Utilisez la valeur de #pdfContent comme paramètre dans la requête AJAX
+        $.ajax({
+            method: "POST",
+            url: "{% url 'check_plagiat' %}",
+            headers: {
+              "X-CSRFToken": csrfToken
+            },
+          data: text,
+          success: function(data) {
+            console.log(data);
+            // Faites quelque chose avec les données renvoyées si nécessaire
+          }, error: function(jqXHR, textStatus, errorThrown) {
+            console.error('Erreur lors de la requête AJAX:', textStatus, errorThrown);
+            // Gérez l'erreur côté client (par exemple, affichez un message d'erreur)
+            spinnerMessageDiv.innerText = 'Erreur lors de la requête AJAX';
+        },
+        complete: function() {
+            // Cacher le spinner une fois que la requête est terminée (que ce soit un succès ou un échec)
+            hideSpinner();
+        }
+          })
+          
+         /* ).done(function (response) {
+            console.log(response)
+          
+        })
+        .fail(function (response) {
+            console.log(response)
+        })*/
+        
+        
+       /*$.ajax({
+            type: 'GET',
+            url: "check_plagiat/" + text,
+            success: function(data) {
+                console.log(data);
+                // Faites quelque chose avec les données renvoyées si nécessaire
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.error('Erreur lors de la requête AJAX:', textStatus, errorThrown);
+                // Gérez l'erreur côté client (par exemple, affichez un message d'erreur)
+                spinnerMessageDiv.innerText = 'Erreur lors de la requête AJAX';
+            },
+            complete: function() {
+                // Cacher le spinner une fois que la requête est terminée (que ce soit un succès ou un échec)
+                hideSpinner();
+            }
+        });*/
+    }
+
+    function hideSpinner() {
+        loadingDiv.style.visibility = 'hidden';
+        spinnerMessageDiv.innerText = '';
+    }
     </script>
+
+   
+    
 {% endblock %} 
 
 

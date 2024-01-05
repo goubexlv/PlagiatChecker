@@ -131,3 +131,4 @@ AUTH_USER_MODEL = "accounts.Users"
 
 MEDIA_ROOT = './media/'
 MEDIA_URL = '/media/'
+APPEND_SLASH=False

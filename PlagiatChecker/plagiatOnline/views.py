@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect, JsonResponse
 from plagiatOnline.form import DocumentsForm
 from plagiatOnline.models import Documents
 from api.api_plagiat import * 
+from django.http import JsonResponse
 
 # Create your views here.
 
@@ -40,5 +41,17 @@ def extract_pdf_content(pdf_file):
         return {'status': 'success', 'result': result}
     except Exception as e:
         return {'status': 'error', 'message': str(e)}
+
+def check_plagiat(request):
+    if request.method == "POST": 
+        try:
+            online_plagiarism_checker = Onlineplagiat()
+            text = request.POST.get('text', '')  # Récupérer le texte de la requête POST
+            #print(text)
+            result = online_plagiarism_checker.onlineText(text)
+            return JsonResponse({'status': 'success', 'result': result})
+        except Exception as e:
+            return JsonResponse({'status': 'error', 'message': str(e)})
+    return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
 
 
