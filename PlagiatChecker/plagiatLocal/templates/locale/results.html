@@ -12,6 +12,7 @@
             </nav>
         </div>
     </div>
+  
     <div class="row clearfix">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
@@ -55,45 +56,57 @@
 
             {% endif %}
         </br>
-                <nav>
-                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                      <button class="nav-link active" id="nav-home-tab" data-toggle="tab" data-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Upload (.pdf)</button>
-                      <button class="nav-link" id="nav-profile-tab" data-toggle="tab" data-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Upload (.txt,.py,...)</button>
-                    </div>
-                  </nav>
-                  <div class="tab-content" id="nav-tabContent">
-                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                        
-                        <form method = "POST" class="post-form" action = "{% url 'envoifichier' %}" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            <label class="form-label" for="customFile"> Upload (.pdf)</label>
-                            <input type="file" class="form-control" id="nomdoc" name="nomdoc"/>
-                           
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+              <button class="btn btn-outline-primary"  id="nav-home-tab" data-toggle="tab" data-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Upload (.pdf)</button>
+              <button class="btn btn-outline-primary" id="nav-profile-tab" data-toggle="tab" data-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Upload (.txt,.py,...)</button>
+            </div>
+          </nav>
+          <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                
+                <form method = "POST" class="post-form" action = "{% url 'envoifichier' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <label class="form-label" for="customFile"> Upload (.pdf)</label>
 
-                            <div class="mt-4 mb-4 p-3 align-center rt-sidebar-last-ele">
-                               
-                                <button type="submit" class="btn btn-primary"> 
-                                     Envoyer</button>
-                            </div>
-                        </form>
-                    
-                    </div> 
-                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" >
-                                         
-                        <form method = "POST" class="post-form" action = "{% url 'envoifichier2' %}" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            <label class="form-label" for="customFile"> Upload (.txt,.py,...)</label>
-                            <input type="file" class="form-control" id="nomdoc" name="nomdoc"/>
-
-                            <div class="mt-4 mb-4 p-3 align-center rt-sidebar-last-ele">
-                               
-                                <button type="submit" class="btn btn-primary"> 
-                                     Envoyer</button>
-                            </div>
-                        </form>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input id="nomdoc" name="nomdoc" type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
+                        <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+                      </div>
+          
+                        <div class="input-group-append">
+                          <button type="submit" class="btn btn-outline-primary" type="button" id="inputGroupFileAddon04">Upload</button>
+                        </div>
                     
                     </div>
-                  </div>
+
+                    
+                </form>
+            
+            </div> 
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" >
+                                 
+                <form method = "POST" class="post-form" action = "{% url 'envoifichier2' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <label class="form-label" for="customFile"> Upload (.txt,.py,...)</label>
+
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input id="nomdoc" name="nomdoc" type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
+                        <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+                      </div>
+          
+                        <div class="input-group-append">
+                          <button type="submit" class="btn btn-outline-primary" type="button" id="inputGroupFileAddon04">Upload</button>
+                        </div>
+                    
+                    </div>
+
+                </form>
+            
+            </div>
+          </div>
 
             </div>
             </div>

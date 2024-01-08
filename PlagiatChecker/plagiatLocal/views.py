@@ -39,13 +39,14 @@ def plagiatLocalResponse1(request):
 
 
 def send_fichier(request):
+    fichier = str(request.FILES['nomdoc'])
     liste_sup = Rapport.objects.all()
     if liste_sup:
         for sup in liste_sup:
             rapp = Rapport.objects.get(id=sup.id)
             rapp.delete()
     
-    fichier = str(request.FILES['nomdoc'])
+    
     pdfverif = []
     plagia = Plagialocal()
     if Typefile(fichier) == "pdf":
