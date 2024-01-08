@@ -26,13 +26,13 @@ class Plagialocal:
             nom = os.path.basename(fichier2)
         
             if pourcentage >= 0 and pourcentage <=25:
-                couleur = "#FFC961"
+                couleur = "badge badge-info"
             elif pourcentage >= 26 and pourcentage <= 50:
-                couleur = "#1D702D"
-            elif pourcentage >= 51 and pourcentage <= 75:
-                couleur = "#FC7F3C"
-            elif pourcentage >= 76 and pourcentage <= 100:
-                couleur = "#B83A1B"
+                couleur = "badge badge-success"
+            elif pourcentage >= 51 and pourcentage <= 74:
+                couleur = "badge badge-warning"
+            elif pourcentage >= 75 and pourcentage <= 100:
+                couleur = "badge badge-danger"
             
             return [nom1,nom,couleur,pourcentage]
         
@@ -53,13 +53,13 @@ class Plagialocal:
         nom = os.path.basename(fichier2)
         
         if pourcentage >= 0 and pourcentage <=25:
-            couleur = "#FFC961"
+                couleur = "badge badge-info"
         elif pourcentage >= 26 and pourcentage <= 50:
-            couleur = "#1D702D"
-        elif pourcentage >= 51 and pourcentage <= 75:
-            couleur = "#FC7F3C"
-        elif pourcentage >= 76 and pourcentage <= 100:
-            couleur = "#B83A1B"
+            couleur = "badge badge-success"
+        elif pourcentage >= 51 and pourcentage <= 74:
+            couleur = "badge badge-warning"
+        elif pourcentage >= 75 and pourcentage <= 100:
+            couleur = "badge badge-danger"
          
         #return pourcentage   
         return [nom1,nom,couleur,pourcentage]
