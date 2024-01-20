@@ -7,7 +7,7 @@ from .views import index
 from accounts.views import login_user,register_user,logout_user
 from plagiatDocuments.views import plagiatDocument
 from plagiatLocal.views import plagiatLocal, send_fichier , send_fichier2 , plagiatLocalResponse, plagiatLocalResponse1,plagiatlocal
-from plagiatOnline.views import plagiatOnline
+from plagiatOnline.views import plagiatOnline,upload_file,check_plagiat
 
 urlpatterns = [
     path("", login_user, name="login_user"),
@@ -30,6 +30,8 @@ urlpatterns = [
     
     
     # Gallagher
-    path("plagiatOnline/", plagiatOnline ,name="plagiatOnline"),    
+    path("plagiatOnline/", plagiatOnline ,name="plagiatOnline"),
+    path("upload_file/", upload_file ,name="upload_file"),    
+    path("check_plagiat/", check_plagiat,name="check_plagiat"),    
 
 ]

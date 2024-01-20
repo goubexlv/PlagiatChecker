@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'plagiatDocuments',
     'plagiatLocal',
     'plagiatOnline',
+    'import_export',
     
 ]
 
