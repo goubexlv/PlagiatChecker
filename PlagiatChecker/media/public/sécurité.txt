@@ -1,0 +1,81 @@
+Qu’est-ce que la sécurité informatique ?
+La sécurité IT (ou sécurité informatique) est un dispositif vaste et multiforme visant à protéger un réseau informatique et ses données contre toute violation, fuite, publication d’informations privées ou attaque.
+
+Pourquoi la sécurité informatique est-elle importante ?
+La sécurité informatique est essentielle pour prévenir les attaques et les tentatives d’hameçonnage, le vol d’informations, les failles de sécurité et la destruction de biens. Tous les appareils tels que les tablettes et les smartphones sont de plus en plus menacés, car ils stockent désormais plus de données publiques et privées que la plupart des ordinateurs. En raison de l’augmentation exponentielle des cyberattaques l’année dernière, la plupart des entreprises et des particuliers subiront des interruptions de service et des vols de données.
+
+Réduisez vos risques en rendant la sécurité informatique plus simple et plus facile à gérer avec HPE GreenLake
+Solutions, produits ou services HPE connexes
+Sécurité de l’infrastructure
+
+Projet Aurora de HPE
+
+Pourquoi la sécurité informatique est-elle nécessaire pour les appareils intelligents ?
+Assurer la sécurité de tous les appareils intelligents et ordinateurs est essentiel pour protéger les données et les biens confidentiels. Cela suppose d’installer des logiciels contre les programmes malveillants et des antivirus sur vos appareils, ainsi que d’incorporer une authentification multifacteur (MFA) à la procédure d’accès à l’appareil. Une autre couche de protection peut être établie par évaluation des risques et des vulnérabilités du système actuellement utilisé. Lorsque de tels systèmes ont été mis en place, les tentatives malveillantes sont efficacement découragées ou peuvent être soigneusement évaluées pour prévenir de futures attaques.
+
+Sujets connexes
+Sécurité du cloud
+
+Surveillance de la sécurité
+
+ 
+
+Pourquoi votre entreprise a-t-elle besoin de sécurité informatique ?
+La sécurité informatique de votre entreprise est une préoccupation à multiples facettes. Pour protéger votre entreprise, vous devez protéger vos clients et votre personnel. Cela revient à protéger efficacement l’ensemble des actifs de l’entreprise : communication, données, éléments de propriété intellectuelle, réseaux utilisés pour communiquer ou stocker des données sensibles contre un accès non autorisé, etc.
+
+Les entreprises sont souvent la cible d’attaques par ransomware, qui obligent la victime à payer une rançon au pirate pour que celui-ci restaure les actifs de l’entreprise. Il est essentiel d’être préparé et de disposer des outils et des ressources requis pendant et après toute attaque. La sécurité informatique permet de préserver la confidentialité des données de votre entreprise et de reprendre le contrôle après un incident à l’aide de ressources de gestion des risques.
+Les menaces qui pèsent sur votre entreprise peuvent être évitées grâce à la sécurité informatique. Les logiciels espions, les virus et les ransomware sont les plus courantes des menaces immédiates visant les informations confidentielles de votre entreprise et de vos clients. Lorsque votre entreprise a mis en place une sécurité informatique au sein de son infrastructure, elle bénéficie de la protection de votre réseau interne. Cette sécurité dissuade tout utilisateur non autorisé d’accéder ou d’interférer avec les informations qui résident dans votre réseau interne. Son travail consiste à s’assurer que toutes les informations restent protégées et inaccessibles aux utilisateurs externes, qu’ils aient ou non des intentions malveillantes.
+
+Quels sont les différents types de sécurité informatique ?
+Sécurité du réseau
+La sécurité informatique se décline en quatre grandes catégories. La première est la sécurité du réseau. Il s’agit du niveau de protection qui empêche les utilisateurs non autorisés ou hostiles d’accéder à votre réseau. Si un pirate accède à votre réseau, il peut effectivement empêcher vos utilisateurs autorisés d’accéder à leurs propres données sur ce réseau. Cela affecte tous les aspects du fonctionnement de votre entreprise. Une interruption de service peut être tout aussi dommageable qu’une fuite de données ou qu’une information financière volée.
+
+Sécurité internet
+Les pare-feu fournissent une sécurité sur internet, qui protège toutes les données traitées dans un navigateur ou une application internet. Tout logiciel malveillant qui tente d’accéder à votre système via une connexion internet peut être signalé et bloqué. Cette action est nécessaire, car les navigateurs et les applications internet sont de plus en plus utilisés pour accéder à des quantités massives d’informations personnelles.
+
+Sécurité du cloud
+La sécurité du cloud est un élément fondamental des offres de sécurité de HPE. Elle est rapidement devenue l’une des principales priorités en matière de sécurité informatique car la plupart des données personnelles sont désormais enregistrées directement dans le cloud. Ce niveau de protection consiste à sécuriser les applications SaaS utilisées sur les appareils personnels, ainsi que l’utilisation du cloud public.
+
+Sécurité des terminaux
+La sécurité des terminaux protège vos appareils personnels tels que les téléphones portables, les ordinateurs portables et les tablettes. Elle peut être intégrée au logiciel de votre appareil, ce qui empêche ce dernier d’accéder à des réseaux à caractère malveillant. Elle empêche également votre appareil de transférer des données du réseau de votre entreprise directement vers internet.
+
+Services et solutions HPE pour la sécurité informatique
+Les solutions de sécurité HPE offrent une protection de bout en bout, y compris les logiciels et firmware intégrés ou facultatifs, de façon à constituer un réseau dans lequel les données peuvent fructifier au sein d’une infrastructure sécurisée. HPE est non seulement un fournisseur de ressources logicielles de sécurité pour le secteur public, mais aussi le fabricant du serveur qui répond aux normes les plus élevées du secteur technologique.
+
+Le serveur HPE ProLiant DL380T est fabriqué avec soin dans des installations hautement sécurisées aux États-Unis. Avec le ProLiant DL380T, vous bénéficierez d’une sécurité haut de gamme intégrée à la technologie. Celui-ci fournit simultanément des composants de sécurité essentiels dans le matériel du serveur et une sécurité réseau intégrée qui s’étend au cloud.
+Étant donné que de nombreuses entreprises travaillent désormais à distance, les serveurs deviennent rapidement la structure la plus utilisée pour transférer et héberger vos données. Par rapport à ses concurrents du secteur, HPE se distingue par une sécurité exceptionnelle, une détection précoce des violations de données, des réponses plus rapides aux attaques et des taux de récupération de données nettement plus élevés.
+HPE offre à ses clients une sécurité de haut niveau qui leur permettra de prendre en charge et protéger efficacement leurs données tout en minimisant les attaques. Afin de garantir la plus haute qualité des produits livrés aux clients, les usines HPE sont étroitement surveillées à chaque étape de la production. Cela permet d’écarter toute erreur humaine ou altération susceptible d’affecter le produit avant son expédition.
+La réduction des vulnérabilités permet d’éviter toute compromission de vos données tout en garantissant leur accessibilité et leur entière disponibilité. Même lorsque votre serveur subit une panne d’alimentation, chaque entrée et intrusion sera suivie dans la mesure où une alerte est immédiatement envoyée au client.
+Acteur majeur de l’industrie technologique mondiale, HPE se concentre sur la fourniture de solutions intelligentes qui permettent aux clients de stocker, transporter et analyser leurs données de manière efficace, sûre et transparente.
+
+Comment pouvons-nous vous aider?
+Aidez-moi dans ma recherche
+Rechercher sur le site hpe.comRechercher sur le site hpe.com
+Comment acheter
+Support Produit
+Écrire à l’équipe commerciale
+Contacter HPE
+ENTREPRISE
+À propos de HPE
+Accessibilité
+Carrières
+Contactez-nous 
+Responsabilité d’entreprise
+Diversité mondiale et inclusion
+Déclaration de transparence de HPE relative à l’esclavage moderne (PDF)
+Hewlett Packard Labs
+Relations avec les investisseurs
+Leadership
+Politique générale
+Indices pour l’égalité professionnelle Femmes-> Hommes
+DÉCOUVRIR
+Intelligence artificielle
+Cloud Computing
+Conteneurs
+Machine Learning
+Glossaire de l’entreprise
+ACTUALITÉS ET ÉVÉNEMENTS
+Salle de rédaction
+HPE Discover
+Évènements
+Webinair
