@@ -67,10 +67,8 @@ def send_fichier(request):
                                 nouveau.append(plagia.plagiapdf("./media/public/"+fichier,"./media/"+str(document.nomdoc)))
                                 for nv in nouveau:
                                     rapport = Rapport(document.id,nv[0],nv[1],nv[2],nv[3],0)
-                                    rapport.save()
-                             
-                                
-                            pdfverif.append(rapport)
+                                    rapport.save()  
+                                pdfverif.append(rapport)
                 
                 
                 print(pdfverif) 
@@ -117,7 +115,7 @@ def send_fichier2(request):
                                     for nv in nouveau:
                                         rapport = Rapport(document.id,nv[0],nv[1],nv[2],nv[3],0)
                                         rapport.save()
-                                pdfverif.append(rapport)
+                                    pdfverif.append(rapport)
                     
                     
                 print(pdfverif) 
