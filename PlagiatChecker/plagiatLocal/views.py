@@ -111,10 +111,12 @@ def send_fichier2(request):
                         for document in documents:
                             if Typefile(str(document.nomdoc)) == typf and str(document.nomdoc) != str(dernier.nomdoc):
                                 nouveau = []
-                                nouveau.append(plagia.plagiafichier("./media/public/"+fichier,"./media/"+str(document.nomdoc)))
-                                for nv in nouveau:
-                                    rapport = Rapport(document.id,nv[0],nv[1],nv[2],nv[3],0)
-                                    rapport.save()
+                                path = "./media/"+str(document.nomdoc)
+                                if os.path.isfile(path) :
+                                    nouveau.append(plagia.plagiafichier("./media/public/"+fichier,"./media/"+str(document.nomdoc)))
+                                    for nv in nouveau:
+                                        rapport = Rapport(document.id,nv[0],nv[1],nv[2],nv[3],0)
+                                        rapport.save()
                                 pdfverif.append(rapport)
                     
                     
