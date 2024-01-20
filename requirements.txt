@@ -83,7 +83,7 @@ translationstring==1.4
 trio==0.23.1
 trio-websocket==0.11.1
 tweepy==4.14.0
-Twisted==22.4.0
+Twisted==23.10.0
 txaio==23.1.1
 typing_extensions==4.7.1
 u-msgpack-python==2.3.0
