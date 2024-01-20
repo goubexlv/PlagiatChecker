@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from plagiatLocal.forms import DocumentForm
 from plagiatLocal.models import Document
 from plagiatLocal.models import Rapport
+import os.path
 
 from api.workfile import *
 from api.plagialocal import * 
