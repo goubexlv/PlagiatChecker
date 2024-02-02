@@ -3,6 +3,8 @@ from plagiatLocal.forms import DocumentForm
 from plagiatLocal.models import Document
 from plagiatLocal.models import Rapport
 import os.path
+from glob import iglob
+import os
 
 from api.workfile import *
 from api.plagialocal import * 
@@ -59,24 +61,20 @@ def send_fichier(request):
                     
                     dernier = Document.objects.latest('id')
                     documents = Document.objects.all()
-                    for document in documents:
-                        if Typefile(str(document.nomdoc)) == "pdf" and str(document.nomdoc) != str(dernier.nomdoc):
+                    files = listedefichier()
+                    ids = 0
+                    for file in files:
+                        path = './media/'+str(dernier.nomdoc)
+                        if file != path:
                             nouveau = []
-                            path = "./media/"+str(document.nomdoc)
                             if os.path.isfile(path) :
-                                nouveau.append(plagia.plagiapdf("./media/public/"+fichier,"./media/"+str(document.nomdoc)))
+                                nouveau.append(plagia.plagiapdf('./media/public/'+fichier,file))
+                                ids = ids + 1
                                 for nv in nouveau:
-                                    rapport = Rapport(document.id,nv[0],nv[1],nv[2],nv[3],0)
+                                    rapport = Rapport(ids,nv[0],nv[1],nv[2],nv[3],0)
                                     rapport.save()  
-                                pdfverif.append(rapport)
-                
-                
-                print(pdfverif) 
-                rapport_list = Rapport.objects.all()
-                n='0'
-                context = {
-                    'resultats': rapport_list
-                }
+                                    pdfverif.append(rapport)
+                 
                 #return render(request,"locale/result.html",{'n':n},{'resultats': rapport_list}) 
                 return redirect("resultat")
     else:
@@ -104,16 +102,20 @@ def send_fichier2(request):
                         doc.save()
                         
                         typf = Typefile(fichier)
+                        print(typf)
                         dernier = Document.objects.latest('id')
                         documents = Document.objects.all()
-                        for document in documents:
-                            if Typefile(str(document.nomdoc)) == typf and str(document.nomdoc) != str(dernier.nomdoc):
+                        files = listedefichiers(typf)
+                        ids = 0
+                        for file in files:
+                            path = './media/'+str(dernier.nomdoc)
+                            if file != path:
                                 nouveau = []
-                                path = "./media/"+str(document.nomdoc)
                                 if os.path.isfile(path) :
-                                    nouveau.append(plagia.plagiafichier("./media/public/"+fichier,"./media/"+str(document.nomdoc)))
+                                    nouveau.append(plagia.plagiafichier('./media/public/'+fichier,file))
+                                    ids = ids + 1
                                     for nv in nouveau:
-                                        rapport = Rapport(document.id,nv[0],nv[1],nv[2],nv[3],0)
+                                        rapport = Rapport(ids,nv[0],nv[1],nv[2],nv[3],0)
                                         rapport.save()
                                     pdfverif.append(rapport)
                     
@@ -131,4 +133,17 @@ def send_fichier2(request):
         return redirect("plagiatLocals")
                 
                     
+def uploadfichier(request):
+    fichier = str(request.FILES['thefile'])
+    if Typefile(fichier) == "pdf" or Typefile(fichier) == "txt" or Typefile(fichier) == "py" or Typefile(fichier) == "c":
+        if request.method == 'POST':
+            documents = Document.objects.all()
+            ids = len(documents) + 1
+            doc = Document(ids,'public/'+str(request.FILES['thefile']))
+            doc.save()
+            upload_file(request.FILES['thefile'])   
+                
+        return redirect("plagiatLocal")
+    else:
+        return redirect("plagiatLocals")
     

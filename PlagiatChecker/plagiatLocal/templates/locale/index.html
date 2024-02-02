@@ -12,6 +12,36 @@
             </nav>
         </div>
     </div>
+
+    {% if errors == '1' %}
+    <div class="alert alert-danger" role="alert">
+        Veiller Uploader un fichier du bon type 
+    </div>  
+    {% endif %}
+
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+          
+        
+        <form enctype="multipart/form-data">
+              <label class="form-label" for="customFile"> Upload une liste de fichier </label>
+
+              <div class="input-group">
+                <div class="custom-file">
+                  <input  id="fileToUpload"  type="file" multiple="multiple" required class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
+                  <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+                </div>
+    
+                  <div class="input-group-append">
+                    <button type="submit" class="btn btn-outline-primary" type="button" id="inputGroupFileAddon04">Upload</button>
+                  </div>
+              
+              </div>
+
+              
+              <div class="box" id="imgPreview"></div>
+        </form> 
+      </div> 
   
     <div class="row clearfix">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -36,7 +66,7 @@
         
                                 <div class="input-group">
                                   <div class="custom-file">
-                                    <input  id="nomdoc" name="nomdoc" type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
+                                    <input  id="nomdoc" name="nomdoc" type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" >
                                     <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
                                   </div>
                       
@@ -58,7 +88,7 @@
         
                                 <div class="input-group">
                                   <div class="custom-file">
-                                    <input id="nomdoc" name="nomdoc" type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
+                                    <input id="nomdoc" name="nomdoc" type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" required>
                                     <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
                                   </div>
                       
@@ -87,6 +117,75 @@
         </div>
     </div>
 {% endblock %}
+
+{% block scripts %}
+
+<script type="text/javascript">// <![CDATA[
+  function createThumbnail(file) {
+      var reader = new FileReader();
+
+      reader.readAsDataURL(file);
+      /*
+       * "L'objet FileReader permet aux applications Web de
+       * lire le contenu des fichiers
+       * (ou des tampons de données brutes)
+       * stockés sur l'ordinateur de l'utilisateur de manière asynchrone"
+       *
+       * https://developer.mozilla.org/fr/docs/DOM/FileReader
+       *
+       * Asynchrone d'ou l'obligation du reader.onload
+       * (fin du chargemen du File ) avant de lancer des traitements
+       * sur ce reader
+       *
+       */
+       
+      reader.onload = function(e) {
+          var imgElement = document.createElement('img');
+          imgElement.style.maxWidth = '150px';
+          imgElement.style.maxHeight = '150px';
+          /*
+           * Plus lisble qu'un this.result que je trouve
+           * particulièrement illisible
+           */
+          imgElement.src = e.target.result;
+          document.getElementById('imgPreview').appendChild(imgElement);
+      }
+  }
+
+  document.querySelector('#fileToUpload').onchange = function() {
+      console.log("Stat to upload");
+      var filesList = this.files;
+      console.log("List Files");
+      for (var i = 0, filesListLength = filesList.length; i < filesListLength; i++) {
+          useFile = filesList[i];
+          console.log("File num : " + i + " Name : " + useFile.name + " Size : " + useFile.size + " Type : " + useFile.type);
+          createThumbnail(useFile);
+          upload(useFile);
+      }
+  }
+
+  function upload(file) {
+    var xhr = new XMLHttpRequest();
+    var csrfToken = document.cookie.match(/csrftoken=([^ ;]+)/)[1];
+    xhr.open('POST', "{% url 'uploadfichier'  %}", true);
+    xhr.setRequestHeader('X-CSRFToken', csrfToken);
+    var param = this.file;
+    var formData = new FormData();
+    formData.append("thefile", file);
+    xhr.send(formData);
+ 
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == xhr.DONE) {
+            console.log('Upload Done / response '+xhr.responseText);
+        }
+    };
+ 
+}
+
+
+// ]]></script>
+
+{% endblock %} 
 
 
 
