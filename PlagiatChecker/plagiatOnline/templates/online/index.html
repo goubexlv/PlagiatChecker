@@ -176,9 +176,18 @@
 {% block scripts %}
     {{ block.super }}
 
+    
+    <script src="{% static 'assets/bundles/dropzonejs/min/dropzone.min.js' %}"></script>
+    {% comment %} <script src="{% static 'assets/js/page/multiple-upload.js' %}"></script> {% endcomment %}
+    <script src="{% static 'assets/bundles/summernote/summernote-bs4.js' %}"></script>
+    <script src="{% static 'assets/bundles/datatables/datatables.min.js' %}"></script>
+    <script src="{% static 'assets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'assets/js/page/datatables.js' %}"></script>
+    <script src="{% static 'assets/js/sweet.js' %}"></script>
+    
     <script>
       var textarea = document.getElementById('textarea');
-
+      var text = "";
       // Ajoutez un écouteur d'événements pour l'événement 'input'
       textarea.addEventListener('input', function() {
           // Mettez à jour la variable avec le contenu actuel du champ texte
@@ -199,7 +208,29 @@
                   // Vérifiez ici le champ du Step 2
                   var inputFieldStep2 = $('#pdfContent').text();
                   console.log(inputFieldStep2);
-                  if (inputFieldStep2 == '') {
+
+                  if(inputFieldStep2){
+                    {% comment %} var inputFieldStep2 = $('#pdfContent').text(inputFieldStep2); {% endcomment %}
+                  }else{
+                    var summernoteContent = $('#textarea').summernote('code');
+                    summernoteContent = summernoteContent.replace(/<(?!br\s*\/?)[^>]+>/g, '');
+            
+                        // Check if summernoteContent is not empty or does not contain only <br>
+                    if (summernoteContent.trim() !== '' && summernoteContent !== '<br>') {
+                        $('#pdfContent').val(summernoteContent);
+                        text = summernoteContent;
+                    } else {
+                        $('#pdfContent').val(''); // Set to an empty string if Summernote content is empty or contains only <br>
+                    }
+          
+                    var inputFieldStep1 = $('#pdfContent').val(); // Use val() instead of text()
+                    console.log(inputFieldStep2);
+                   $('#pdfContent').text(inputFieldStep1);
+
+                  }
+
+
+                  if (inputFieldStep2 == '' && inputFieldStep1 == '') {
                       // Champ du Step 2 vide, n'autorisez pas le passage au Step 3
                       swal("Echec", "Veuillez faire au moins un ajout", "error");
 
@@ -230,17 +261,7 @@
        
 
       console.log($('#textarea'));
-    </script>
-        
-    <script src="{% static 'assets/bundles/dropzonejs/min/dropzone.min.js' %}"></script>
-    {% comment %} <script src="{% static 'assets/js/page/multiple-upload.js' %}"></script> {% endcomment %}
-    <script src="{% static 'assets/bundles/summernote/summernote-bs4.js' %}"></script>
-    <script src="{% static 'assets/bundles/datatables/datatables.min.js' %}"></script>
-    <script src="{% static 'assets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js' %}"></script>
-    <script src="{% static 'assets/js/page/datatables.js' %}"></script>
-    <script src="{% static 'assets/js/sweet.js' %}"></script>
-
-    <script>
+    
 
       var loadingDiv = document.getElementById('loading');
       var spinnerMessageDiv = document.getElementById('spinnerMessage');
@@ -250,7 +271,7 @@
         spinnerMessageDiv.innerText = '';
     }
  
-      var text = "";
+    
       Dropzone.options.mydropzone = {
           paramName: "file", // Le nom du paramètre qui contient le fichier sur le serveur
           maxFilesize: 1000, // Taille maximale du fichier en Mo
