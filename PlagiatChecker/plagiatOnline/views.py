@@ -69,7 +69,8 @@ def check_plagiat(request):
         try:
             online_plagiarism_checker = OnlinePlagiatChecker()
             text = list(request.POST.keys())[0]
-            result = online_plagiarism_checker.check_plagiarism(text)
+            texting  =  text[:50]
+            result = online_plagiarism_checker.check_plagiarism(texting)
             
             return JsonResponse({'status': 'success', 'result': result}, content_type='application/json')  # Assurez-vous de spécifier le bon type de contenu
         except Exception as e:
