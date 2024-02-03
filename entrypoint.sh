@@ -2,8 +2,8 @@
 
 set -e 
 
-source /env/bin/activate
-python manage.py migrate
+source .env/bin/activate
+python PlagiatChecker/manage.py migrate
 
 if [$l == 'gunicorn']; then 
 
