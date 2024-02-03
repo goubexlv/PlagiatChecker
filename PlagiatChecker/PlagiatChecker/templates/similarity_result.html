@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résultat de la détection de similitude</title>
+
+    
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-5">
+
+    <h1 class="mb-4">Résultat de la détection de similitude</h1>
+
+    {% if spacy_similarity_percentage is not None and jaccard_similarity_percentage is not None %}
+        <div class="alert alert-success">
+            <p class="mb-0">Similarité SpaCy : {{ spacy_similarity_percentage }}%</p>
+            <p class="mb-0">Similarité de Jaccard : {{ jaccard_similarity_percentage }}%</p>
+        </div>
+
+        
+
+        {% if spacy_similarity_percentage == 100 and jaccard_similarity_percentage == 100 %}
+            <div class="alert alert-success">
+                <p class="mb-0">Les fichiers sont identiques.</p>
+            </div>
+        {% else %}
+            <div class="alert alert-danger">
+                <p class="mb-0">Les fichiers sont différents.</p>
+            </div>
+        {% endif %}
+
+    {% else %}
+        <div class="alert alert-danger">
+            <p class="mb-0">Erreur lors de la détection de similitude.</p>
+        </div>
+    {% endif %}
+
+</body>
+</html>

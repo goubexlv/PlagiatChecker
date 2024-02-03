@@ -14,7 +14,7 @@ def login_user(request):
         
         if user:
             login(request , user)
-            return  redirect('index')
+            return  redirect('plagiatOnline')
     return render(request,'accounts/login.html')
 
 def register_user(request):
@@ -33,7 +33,7 @@ def register_user(request):
         # Ensuite Connecter L'utilisateur inscrit
         login(request, user_create)
         # Et rediriger vers la page d'acceuil
-        return redirect('index')
+        return redirect('plagiatOnline')
     return render(request, 'accounts/register.html')
 
 def logout_user(request):

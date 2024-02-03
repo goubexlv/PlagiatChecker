@@ -75,10 +75,10 @@
                  <span class="logo-name">Plagiat Checker</span>
           </div>
           <ul class="sidebar-menu">
-            <li class="menu-header">Main</li>
+            {% comment %} <li class="menu-header">Main</li>
             <li class="dropdown active">
               <a href="{% url 'index' %}" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
-            </li>
+            </li> {% endcomment %}
             <li class="menu-header">Online</li>
             <li><a class="nav-link" href="{% url 'plagiatOnline' %}"><i class="material-icons">public</i><span>plagiat en ligne</span></a></li>
             <li class="menu-header">02 Docs</li>
@@ -87,8 +87,8 @@
 
             <li class="menu-header">Local</li>
             <li><a class="nav-link" href="{% url 'plagiatLocal' %}"><i class="material-icons">data_usage</i><span>Plagiat en local</span></a></li>
-            <li class="menu-header">Parametres</li>
-            <li><a class="nav-link" href="#"><i class="material-icons">settings</i><span>Parametres</span></a></li>
+            {% comment %} <li class="menu-header">Parametres</li>
+            <li><a class="nav-link" href="#"><i class="material-icons">settings</i><span>Parametres</span></a></li> {% endcomment %}
           </ul>
         </aside>
       </div>
