@@ -7,6 +7,8 @@ from .views import index
 from accounts.views import login_user,register_user,logout_user
 from plagiatDocuments.views import plagiatDocument, detect_similarity 
 from plagiatLocal.views import plagiatLocal, send_fichier , send_fichier2 , plagiatLocalResponse, plagiatLocalResponse1,plagiatlocal
+from plagiatDocuments.views import plagiatDocument
+from plagiatLocal.views import plagiatLocal, send_fichier , send_fichier2 ,uploadfichier, plagiatLocalResponse, plagiatLocalResponse1,plagiatlocal
 from plagiatOnline.views import plagiatOnline,upload_file,check_plagiat
 
 
@@ -26,6 +28,7 @@ urlpatterns = [
     path("plagiatlocal/", plagiatlocal ,name="plagiatLocals"),
     path("plagiatLocals/", plagiatLocalResponse ,name="resultat"),
     
+    path("uploads/", uploadfichier ,name="uploadfichier"),
     path("send/", send_fichier ,name="envoifichier"),
     path("send2/", send_fichier2 ,name="envoifichier2"),
     
