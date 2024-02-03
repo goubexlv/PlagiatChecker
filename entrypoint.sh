@@ -3,7 +3,7 @@
 set -e 
 
 source /env/bin/activate
-
+python manage.py migrate
 
 if [$l == 'gunicorn']; then 
 
