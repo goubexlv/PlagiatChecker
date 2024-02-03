@@ -21,5 +21,8 @@ COPY entrypoint.sh /app/entrypoint.sh
 
 RUN python -m pip install --upgrade pip
 
+RUN python -m spacy download en_core_web_sm 
+
+
 
 COPY requirements.txt /app/

@@ -2,3 +2,4 @@ cdifflib
 pdfminer.six
 Django==3.2.20
 gunicorn==21.2.0
+spacy==3.0.0
