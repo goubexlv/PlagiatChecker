@@ -2,6 +2,12 @@
 
 
 
+##Talom kuissi roliste amy 23V2648
+##KOUETCHA GERIEL PEROL 20U2948
+##YUSAHOU SALIFUH 22Y1033
+##Ekobo LOUIS JORDAN 22w7722
+##ABDEL RAZAK NDAM 20V2037
+
 Ce projet est une application Django préconfigurée pour fonctionner avec Docker, facilitant le déploiement et l’exécution de l’application dans un environnement isolé.
 
 Prérequis
