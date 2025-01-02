@@ -48,6 +48,4 @@ class PDFContentExtractor:
 # # Extraction du contenu PDF
 
 # # Vérification en ligne du plagiat
-# result = online_plagiarism_checker.check_plagiarism("You don't show where you are trying to reverse this URL, but it looks like you have double-quoted it. If you're using the url tag, note that you don't need quotes around the url name:")
 
-# print(result)
